@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: red;
+  color: #007bff;
   font-family: sans-serif;
 }
 
@@ -22,14 +22,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
   }
 
   @include e(metric) {
     border: none;
-    border-bottom: 1px solid tomato;
+    border-bottom: 1px solid #00c8a4;
     box-shadow: none;
     text-align: center;
+    font-size: 100px;
+    font-weight: bold;
+    width: 100%;
   }
 
   @include e(content) {
@@ -50,12 +52,13 @@
     text-align: center;
     background: lightgrey;
     position: relative;
+    transition: ease-in-out 200ms 150ms;
 
     @include m(under) {
       border-bottom-left-radius: 10px;
       border-top-left-radius: 10px;
       &.active {
-        background: lightgreen;
+        background: linear-gradient(to left, #00c8a4 0%, #58FFD0 50%, #d3ffd8 100%);
       }
     }
 
@@ -63,7 +66,7 @@
       border-left: 3px solid whitesmoke;
       border-right: 3px solid whitesmoke;
       &.active {
-        background: green;
+        background: #00c8a4;
       }
     }
 
@@ -71,7 +74,7 @@
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
       &.active {
-        background: darkgreen;
+        background: linear-gradient(to right, #00c8a4 0%, #00826B 50%, #00291E 100%);
       }
     }
   }
@@ -82,6 +85,7 @@
     top: calc(100% + 5px);
     left: 50%;
     transform: translateX(-50%);
+    color: #007bff;
   }
 
   @include e(arrow) {
