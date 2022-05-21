@@ -1,0 +1,25 @@
+<div class="pet-bmi-widget">
+  <div class="pet-bmi-widget__title">
+    Mr. Cat's BMI is
+  </div>
+  <div class="pet-bmi-widget__input-box">
+    <label>
+      <input class="pet-bmi-widget__metric" type="number" max="120" min="1" [(ngModel)]="petBMI" pattern="\d*" (ngModelChange)="bmiChanged()">
+    </label>
+  </div>
+  <div class="pet-bmi-widget__content">
+    <div class="stripe">
+      <span class="stripe__arrow" [style]="'left:' + petBMINumber + '%'"></span>
+      <div class="stripe__item stripe__item--under" [class.active]="isActive && activeRank === 'underweight'">
+        <span class="stripe__item-title">Underweight</span>
+      </div>
+      <div class="stripe__item stripe__item--normal" [style]="'display: flex; justify-content: space-between'" [class.active]="isActive && activeRank === 'normal'">
+        <span class="stripe__item-title">Normal</span>
+      </div>
+      <div class="stripe__item stripe__item--over" [class.active]="isActive && activeRank === 'overweight'">
+        <span class="stripe__item-title">Overweight</span>
+      </div>
+    </div>
+  </div>
+  <h1>{{ petBMINumber }}</h1>
+</div>

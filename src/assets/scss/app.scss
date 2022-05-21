@@ -1,0 +1,100 @@
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: red;
+  font-family: sans-serif;
+}
+
+@include b(pet-bmi-widget) {
+  margin: 0 auto;
+  max-width: 500px;
+
+  @include e(title) {
+    font-size: 50px;
+    color: #7480E9;
+    text-align: center;
+  }
+
+  @include e(input-box) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  @include e(metric) {
+    border: none;
+    border-bottom: 1px solid tomato;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  @include e(content) {
+    margin-top: 50px;
+  }
+}
+
+@include b(stripe) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @include e(item) {
+    width: 33.33333%;
+    height: 30px;
+    text-align: center;
+    background: lightgrey;
+    position: relative;
+
+    @include m(under) {
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+      &.active {
+        background: lightgreen;
+      }
+    }
+
+    @include m(normal) {
+      border-left: 3px solid whitesmoke;
+      border-right: 3px solid whitesmoke;
+      &.active {
+        background: green;
+      }
+    }
+
+    @include m(over) {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      &.active {
+        background: darkgreen;
+      }
+    }
+  }
+
+  @include e(item-title) {
+    position: absolute;
+    z-index: 0;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @include e(arrow) {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 25px 0 25px;
+    border-color: #007bff transparent transparent transparent;
+    position: absolute;
+    z-index: 1;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
