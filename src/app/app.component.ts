@@ -1,12 +1,44 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import BmpCalculator from './components/BmiCalculator';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild("bmiInput") bmiInput!: ElementRef;
+  @ViewChild('bmiInput') bmiInput!: ElementRef;
+
+  public bmpCalendarSettings = [
+    {
+      title: 'Underweight',
+      width: 25,
+      points: 10,
+      defaultColor: 'lightgrey',
+      activeColor: 'red',
+    },
+    {
+      title: 'Normal',
+      width: 25,
+      points: 100,
+      defaultColor: 'black',
+      activeColor: 'red',
+    },
+    {
+      title: 'Normal',
+      width: 25,
+      points: 10,
+      defaultColor: 'red',
+      activeColor: 'red',
+    },
+    {
+      title: 'Normal',
+      width: 25,
+      points: 100,
+      defaultColor: 'black',
+      activeColor: 'red',
+    },
+  ];
 
   public title = 'Ostereich-proj';
   public petBMI: string = '';
@@ -16,8 +48,7 @@ export class AppComponent {
   public min = 0;
   public max = 120;
 
-  constructor() {
-  }
+  constructor() {}
 
   public bmiChanged(): void {
     this.bmiInput.nativeElement.value.replace('^[1-9][0-9]?$|^120$');
@@ -31,19 +62,21 @@ export class AppComponent {
       this.petBMINumber = this.bmiInput.nativeElement.value;
     }
     switch (true) {
-      case (this.petBMINumber < 30 || this.petBMINumber === 30) : {
+      case this.petBMINumber < 30 || this.petBMINumber === 30: {
         this.petBMINumber = this.petBMINumber * 1.111;
         this.isActive = true;
         this.activeRank = 'underweight';
         break;
       }
-      case (this.petBMINumber === 31 || this.petBMINumber < 90 || this.petBMINumber === 90) : {
+      case this.petBMINumber === 31 ||
+        this.petBMINumber < 90 ||
+        this.petBMINumber === 90: {
         this.petBMINumber = 33.33 + (this.petBMINumber - 30) * 0.555;
         this.isActive = true;
         this.activeRank = 'normal';
         break;
       }
-      case (this.petBMINumber > 90) : {
+      case this.petBMINumber > 90: {
         this.petBMINumber = 66.66 + (this.petBMINumber - 90) * 1.111;
         this.isActive = true;
         this.activeRank = 'overweight';
