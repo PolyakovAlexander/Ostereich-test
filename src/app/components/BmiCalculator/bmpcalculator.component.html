@@ -1,0 +1,27 @@
+<div class="pet-bmi-widget">
+  <div class="pet-bmi-widget__title">Please set your pet's BMI</div>
+  <div class="pet-bmi-widget__input-box">
+    <label>
+      <input
+        #bmiInput
+        class="pet-bmi-widget__metric"
+        type="number"
+        [(ngModel)]="petBMI"
+        (ngModelChange)="bmiChanged()"
+      />
+    </label>
+  </div>
+  <div class="pet-bmi-widget__content">
+    <div class="stripe">
+      <span class="stripe__arrow" [style]="'left:' + petBMINumber + '%'"></span>
+      <div
+        *ngFor="let section of settings"
+        style="background-color: {{
+          section.defaultColor
+        }}; height: 30px; width: {{ section.width + '%' }}; position: relative;"
+      >
+        <span class="stripe__item-title">{{ section.title }}</span>
+      </div>
+    </div>
+  </div>
+</div>
