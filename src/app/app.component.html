@@ -1,45 +1,24 @@
-<div>
-  <div class="pet-bmi-widget">
-    <div class="pet-bmi-widget__title">Please set your pet's BMI</div>
-    <div class="pet-bmi-widget__input-box">
-      <label>
-        <input
-          #bmiInput
-          class="pet-bmi-widget__metric"
-          type="number"
-          [(ngModel)]="petBMI"
-          (ngModelChange)="bmiChanged()"
-        />
-      </label>
-    </div>
-    <div class="pet-bmi-widget__content">
-      <div class="stripe">
-        <span
-          class="stripe__arrow"
-          [style]="'left:' + petBMINumber + '%'"
-        ></span>
-        <div
-          class="stripe__item stripe__item--under"
-          [class.active]="isActive && activeRank === 'underweight'"
-        >
-          <span class="stripe__item-title">Underweight</span>
-        </div>
-        <div
-          class="stripe__item stripe__item--normal"
-          [class.active]="isActive && activeRank === 'normal'"
-        >
-          <span class="stripe__item-title">Normal</span>
-        </div>
-        <div
-          class="stripe__item stripe__item--over"
-          [class.active]="isActive && activeRank === 'overweight'"
-        >
-          <span class="stripe__item-title">Overweight </span>
-        </div>
+<div class="pet-bmi-widget">
+  <div class="pet-bmi-widget__title">
+    Please set your pet's BMI
+  </div>
+  <div class="pet-bmi-widget__input-box">
+    <label>
+      <input #bmiInput class="pet-bmi-widget__metric" type="number" [(ngModel)]="petBMI" (ngModelChange)="bmiChanged()">
+    </label>
+  </div>
+  <div class="pet-bmi-widget__content">
+    <div class="stripe">
+      <span class="stripe__arrow" [style]="'left:' + petBMINumber + '%'"></span>
+      <div class="stripe__item stripe__item--under" [class.active]="isActive && activeRank === 'underweight'">
+        <span class="stripe__item-title">Underweight</span>
+      </div>
+      <div class="stripe__item stripe__item--normal" [class.active]="isActive && activeRank === 'normal'">
+        <span class="stripe__item-title">Normal</span>
+      </div>
+      <div class="stripe__item stripe__item--over" [class.active]="isActive && activeRank === 'overweight'">
+        <span class="stripe__item-title">Overweight</span>
       </div>
     </div>
-  </div>
-  <div>
-    <bmp-calculator [settings]="bmpCalendarSettings"></bmp-calculator>
   </div>
 </div>
